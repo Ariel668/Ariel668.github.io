@@ -1,2 +1,431 @@
-<h1>欢迎</h1>
- <img src=“https://th.bing.com/th/id/OIP.o-a9jlQdmc8NdLgtLYQmJgHaKL?w=194&h=267&c=7&r=0&o=7&dpr=2&pid=1.7&rm=3” alt="封面" width=“500”>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的作文小天地 - 一个12岁女孩的博客</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        // 配置Tailwind自定义颜色和字体
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF9EBB',
+                        secondary: '#A8DADC',
+                        accent: '#FFD166',
+                        light: '#F8F9FA',
+                        dark: '#457B9D'
+                    },
+                    fontFamily: {
+                        handwriting: ['Comic Sans MS', 'cursive'],
+                        sans: ['Nunito', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-light font-sans text-gray-800">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2">
+                <i class="fa fa-pencil-square-o text-primary text-2xl"></i>
+                <span class="font-handwriting text-xl font-bold text-dark">我的作文小天地</span>
+            </a>
+            
+            <!-- 桌面导航 -->
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#home" class="text-gray-600 hover:text-primary transition-colors">首页</a>
+                <a href="#essays" class="text-gray-600 hover:text-primary transition-colors">我的作文</a>
+                <a href="#about" class="text-gray-600 hover:text-primary transition-colors">关于我</a>
+                <a href="#contact" class="text-gray-600 hover:text-primary transition-colors">留言板</a>
+            </div>
+            
+            <!-- 移动端菜单按钮 -->
+            <button class="md:hidden text-gray-600 focus:outline-none" id="menu-toggle">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+        
+        <!-- 移动端导航菜单 -->
+        <div class="md:hidden hidden bg-white w-full" id="mobile-menu">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#home" class="text-gray-600 hover:text-primary py-2 transition-colors">首页</a>
+                <a href="#essays" class="text-gray-600 hover:text-primary py-2 transition-colors">我的作文</a>
+                <a href="#about" class="text-gray-600 hover:text-primary py-2 transition-colors">关于我</a>
+                <a href="#contact" class="text-gray-600 hover:text-primary py-2 transition-colors">留言板</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section id="home" class="pt-24 pb-16 bg-gradient-to-br from-secondary/30 to-primary/20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="font-handwriting text-[clamp(2rem,5vw,3.5rem)] font-bold text-dark leading-tight text-shadow">
+                        欢迎来到<br>我的作文小天地
+                    </h1>
+                    <p class="mt-4 text-lg md:text-xl text-gray-700 max-w-lg">
+                        大家好！我是一个12岁的小女孩，这是我的第一个博客。我会在这里分享我写的作文，希望能得到大家的指点和建议。
+                    </p>
+                    <div class="mt-8">
+                        <a href="#essays" class="inline-block bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                            阅读我的作文 <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://picsum.photos/id/1068/600/400" alt="一个女孩在写作的插画" class="rounded-2xl shadow-xl max-w-full h-auto object-cover transform rotate-1 hover:rotate-0 transition-transform duration-300">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作文分类 -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-center font-handwriting text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-12">作文分类</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                <a href="#" class="flex flex-col items-center p-6 bg-secondary/20 rounded-xl shadow-md hover:shadow-lg transition-all">
+                    <i class="fa fa-book text-4xl text-dark mb-3"></i>
+                    <span class="font-medium">记叙文</span>
+                    <span class="text-sm text-gray-500 mt-1">12篇</span>
+                </a>
+                <a href="#" class="flex flex-col items-center p-6 bg-primary/20 rounded-xl shadow-md hover:shadow-lg transition-all">
+                    <i class="fa fa-leaf text-4xl text-dark mb-3"></i>
+                    <span class="font-medium">说明文</span>
+                    <span class="text-sm text-gray-500 mt-1">8篇</span>
+                </a>
+                <a href="#" class="flex flex-col items-center p-6 bg-accent/20 rounded-xl shadow-md hover:shadow-lg transition-all">
+                    <i class="fa fa-paint-brush text-4xl text-dark mb-3"></i>
+                    <span class="font-medium">散文</span>
+                    <span class="text-sm text-gray-500 mt-1">5篇</span>
+                </a>
+                <a href="#" class="flex flex-col items-center p-6 bg-dark/10 rounded-xl shadow-md hover:shadow-lg transition-all">
+                    <i class="fa fa-star text-4xl text-dark mb-3"></i>
+                    <span class="font-medium">诗歌</span>
+                    <span class="text-sm text-gray-500 mt-1">7篇</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最新作文 -->
+    <section id="essays" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-center font-handwriting text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-12">最新作文</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 作文卡片1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/119/600/400" alt="秋天的公园景色" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <span class="flex items-center"><i class="fa fa-folder-o mr-1"></i> 记叙文</span>
+                            <span class="mx-2">•</span>
+                            <span class="flex items-center"><i class="fa fa-calendar-o mr-1"></i> 2023-10-15</span>
+                        </div>
+                        <h3 class="font-bold text-xl mb-2">秋天的公园</h3>
+                        <p class="text-gray-600 mb-4 line-clamp-3">
+                            秋天的公园真美啊！金黄的落叶像蝴蝶一样在空中飞舞，踩上去沙沙作响。我和妈妈一起在公园里散步，看到了许多美丽的景色...
+                        </p>
+                        <a href="#" class="inline-flex items-center text-primary font-medium hover:underline">
+                            阅读全文 <i class="fa fa-long-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 作文卡片2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/237/600/400" alt="一只可爱的小狗" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <span class="flex items-center"><i class="fa fa-folder-o mr-1"></i> 记叙文</span>
+                            <span class="mx-2">•</span>
+                            <span class="flex items-center"><i class="fa fa-calendar-o mr-1"></i> 2023-10-08</span>
+                        </div>
+                        <h3 class="font-bold text-xl mb-2">我家的小狗</h3>
+                        <p class="text-gray-600 mb-4 line-clamp-3">
+                            我家有一只可爱的小狗，它叫豆豆。豆豆有一身雪白的毛，两只大大的眼睛像黑宝石一样。它很聪明，会做很多有趣的动作...
+                        </p>
+                        <a href="#" class="inline-flex items-center text-primary font-medium hover:underline">
+                            阅读全文 <i class="fa fa-long-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 作文卡片3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/96/600/400" alt="星空夜景" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <span class="flex items-center"><i class="fa fa-folder-o mr-1"></i> 散文</span>
+                            <span class="mx-2">•</span>
+                            <span class="flex items-center"><i class="fa fa-calendar-o mr-1"></i> 2023-09-28</span>
+                        </div>
+                        <h3 class="font-bold text-xl mb-2">夜晚的星空</h3>
+                        <p class="text-gray-600 mb-4 line-clamp-3">
+                            夜晚，我躺在院子里的草地上，抬头望着星空。星星像无数颗钻石镶嵌在黑色的天鹅绒上，一闪一闪的，好像在眨眼睛...
+                        </p>
+                        <a href="#" class="inline-flex items-center text-primary font-medium hover:underline">
+                            阅读全文 <i class="fa fa-long-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block border-2 border-dark text-dark hover:bg-dark hover:text-white font-medium py-2 px-6 rounded-full transition-colors">
+                    查看所有作文 <i class="fa fa-th-list ml-1"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/3">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/64/400/500" alt="博主照片" class="w-full max-w-sm mx-auto rounded-2xl shadow-xl">
+                        <div class="absolute -bottom-4 -right-4 bg-accent rounded-full p-4 shadow-lg">
+                            <span class="font-handwriting font-bold text-dark text-xl">12岁</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-2/3">
+                    <h2 class="font-handwriting text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-6">关于我</h2>
+                    <p class="text-gray-700 mb-4 text-lg">
+                        大家好！我叫小雨，今年12岁，是一名小学六年级的学生。我喜欢阅读、写作和画画。
+                    </p>
+                    <p class="text-gray-700 mb-4 text-lg">
+                        我从小学三年级开始喜欢上写作，老师经常表扬我的作文写得好。我希望通过这个博客，分享我的写作作品，也想听听大家的意见，让自己写得更好。
+                    </p>
+                    <p class="text-gray-700 mb-6 text-lg">
+                        除了写作，我还喜欢养小动物，家里有一只可爱的小兔子。我也喜欢大自然，经常和爸爸妈妈一起去郊外游玩，这些经历都给了我很多写作的灵感。
+                    </p>
+                    
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-primary/20 hover:bg-primary/30 text-primary w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                            <i class="fa fa-pencil"></i>
+                        </a>
+                        <a href="#" class="bg-secondary/20 hover:bg-secondary/30 text-dark w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                            <i class="fa fa-book"></i>
+                        </a>
+                        <a href="#" class="bg-accent/20 hover:bg-accent/30 text-dark w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                            <i class="fa fa-paint-brush"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 留言板 -->
+    <section id="contact" class="py-16 bg-gradient-to-br from-primary/10 to-secondary/10">
+        <div class="container mx-auto px-4">
+            <h2 class="text-center font-handwriting text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">留言板</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">
+                如果你喜欢我的作文，或者有什么建议，欢迎在这里给我留言。我会认真阅读每一条留言的！
+            </p>
+            
+            <div class="max-w-3xl mx-auto">
+                <form class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 font-medium mb-2">你的名字</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" placeholder="请输入你的名字">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 font-medium mb-2">电子邮箱</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" placeholder="请输入你的邮箱">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 font-medium mb-2">留言内容</label>
+                        <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" placeholder="请输入你的留言..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1">
+                        发送留言 <i class="fa fa-paper-plane ml-2"></i>
+                    </button>
+                </form>
+                
+                <!-- 精选留言 -->
+                <div class="mt-12">
+                    <h3 class="font-handwriting text-xl font-bold text-dark mb-6">精选留言</h3>
+                    
+                    <div class="space-y-6">
+                        <!-- 留言1 -->
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <div class="flex items-center mb-3">
+                                <img src="https://picsum.photos/id/64/100/100" alt="留言者头像" class="w-10 h-10 rounded-full object-cover">
+                                <div class="ml-3">
+                                    <h4 class="font-medium">王老师</h4>
+                                    <p class="text-sm text-gray-500">2023-10-16</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600">小雨的作文写得很棒！特别是《秋天的公园》这篇，用词生动，描写细腻，把秋天的美展现得淋漓尽致。继续加油哦！</p>
+                        </div>
+                        
+                        <!-- 留言2 -->
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <div class="flex items-center mb-3">
+                                <img src="https://picsum.photos/id/91/100/100" alt="留言者头像" class="w-10 h-10 rounded-full object-cover">
+                                <div class="ml-3">
+                                    <h4 class="font-medium">小明</h4>
+                                    <p class="text-sm text-gray-500">2023-10-10</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600">我也很喜欢小动物，你写的小狗豆豆太可爱了！希望能看到你更多的作文，我们可以互相学习。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 订阅区域 -->
+    <section class="py-12 bg-dark text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="font-handwriting text-[clamp(1.5rem,3vw,2rem)] font-bold mb-4">订阅我的更新</h2>
+                <p class="mb-6 opacity-90">
+                    输入你的邮箱，当我发布新作文时，你会收到通知
+                </p>
+                <form class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+                    <input type="email" placeholder="你的邮箱地址" class="flex-grow px-4 py-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-accent">
+                    <button type="submit" class="bg-accent hover:bg-accent/90 text-dark font-medium py-3 px-6 rounded-lg transition-colors whitespace-nowrap">
+                        立即订阅
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa fa-pencil-square-o text-primary text-xl"></i>
+                        <span class="font-handwriting text-lg font-bold">我的作文小天地</span>
+                    </div>
+                    <p class="text-gray-400 mt-2 text-sm">一个12岁女孩的写作分享空间</p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row items-center md:space-x-8 space-y-4 md:space-y-0">
+                    <a href="#home" class="text-gray-400 hover:text-primary transition-colors">首页</a>
+                    <a href="#essays" class="text-gray-400 hover:text-primary transition-colors">我的作文</a>
+                    <a href="#about" class="text-gray-400 hover:text-primary transition-colors">关于我</a>
+                    <a href="#contact" class="text-gray-400 hover:text-primary transition-colors">留言板</a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 text-sm">
+                <p>© 2023 我的作文小天地 - 保留所有权利</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 bg-primary hover:bg-primary/90 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transform transition-all duration-300 opacity-0 translate-y-10">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-2', 'bg-white/95', 'backdrop-blur-sm');
+                navbar.classList.remove('py-3');
+            } else {
+                navbar.classList.add('py-3');
+                navbar.classList.remove('py-2', 'bg-white/95', 'backdrop-blur-sm');
+            }
+        });
+        
+        // 回到顶部按钮
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.remove('opacity-0', 'translate-y-10');
+                backToTopButton.classList.add('opacity-100', 'translate-y-0');
+            } else {
+                backToTopButton.classList.add('opacity-0', 'translate-y-10');
+                backToTopButton.classList.remove('opacity-100', 'translate-y-0');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // 关闭移动菜单（如果打开）
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
